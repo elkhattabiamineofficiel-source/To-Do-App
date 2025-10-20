@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>➕ Neue Aufgabe hinzufügen</h2>
+<form method="post">
+  <label>Titel: <input type="text" name="title" required></label><br><br>
+  <label>Kategorie: <input type="text" name="category"></label><br><br>
+  <button type="submit">💾 Speichern</button>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>📋 Alle Aufgaben</h2>
+<table>
+  <thead>
+    <tr><th>ID</th><th>Titel</th><th>Kategorie</th><th>Erledigt</th><th>Aktionen</th></tr>
+  </thead>
+  <tbody>
+    {% for t in tasks %}
+    <tr>
+      <td>{{ t[0] }}</td>
+      <td>{{ t[1] }}</td>
+      <td>{{ t[2] }}</td>
+      <td>{{ "Ja" if t[3] else "Nein" }}</td>
+      <td>
+        <a href="{{ url_for('edit', task_id=t[0]) }}">✏️ Bearbeiten</a>
+        <form method="post" action="{{ url_for('delete', task_id=t[0]) }}" style="display:inline;" onsubmit="return confirm('Bist du sicher?');">
+          <button type="submit">🗑️ Löschen</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
